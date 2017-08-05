@@ -1,8 +1,10 @@
 .canvasBox{
-	width:calc(100% - 360px);
-	height: calc(100vh - 50px);
+	width:calc(100% - 60px);
+	height: 100%;
 	display: inline-block;
-	float: left;
 	background: #e1e1e1;
-	overflow: auto;
+	.canvasContainer{
+		width: 100%;
+		height: calc(100% - 40px);
+	}
 }

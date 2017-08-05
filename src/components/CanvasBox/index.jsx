@@ -17,18 +17,19 @@ export default class CanvasBox extends React.Component {
   }
   componentDidMount(){
     const canvas = new fabric.Canvas('canvas');
-    console.log(this.canvasContainer.getBoundingClientRect());
-    canvas.setHeight(600);
-    canvas.setWidth(1100);
-    canvas.renderAll();
+    setTimeout(() => {
+      console.log(this.canvasContainer.getBoundingClientRect());
+      canvas.setHeight(this.canvasContainer.getBoundingClientRect().height);
+      canvas.setWidth(this.canvasContainer.getBoundingClientRect().width);
+      canvas.renderAll();
+    }, 100);
   }
 
   render() {
     return (
       <div className={classes.canvasBox}>
         <Toolbar activeObject={null}/>
-        <div
-          className="section no-pad-bot no-pad-top"
+        <div className={classes.canvasContainer}
           ref={(container) => {
             this.canvasContainer = container;
           }}
