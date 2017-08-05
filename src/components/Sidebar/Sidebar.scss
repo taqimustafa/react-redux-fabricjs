@@ -3,4 +3,42 @@
   display: inline-block;
   height: 100%;
   background: #3E454F;
+  position: absolute;
+  left: 0px;
+  top: 0px;
+}
+
+.listItem{
+  padding: 12px;
+  padding-top: 15px;
+  padding-bottom: 10px;
+  cursor: pointer;
+  text-align: center;
+  border-bottom: 0.5px solid #16191e;
+  &:hover{
+    background-color: #27ae60;
+    transition-duration: 0.5s;
+    .subMenuIcon{
+      fill: #ffffff;
+      filter: drop-shadow( 2px 2px 2px #000 );
+    }
+  }
+  &.active{
+    color: #8ddaeb;
+    background-color: #16191e;
+    position: relative;
+    &:after {
+      content: '';
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      border-bottom: 3px solid #27ae60;
+    }
+  }
+  .subMenuIcon{
+    fill: #ffffff;
+    filter: drop-shadow( 2px 2px 2px #000 );
+  }
 }

@@ -3,6 +3,9 @@
 	height: 100%;
 	display: inline-block;
 	background: #e1e1e1;
+	position: absolute;
+	left: 60px;
+	top: 0px;
 	.canvasContainer{
 		width: 100%;
 		height: calc(100% - 40px);

@@ -39,7 +39,8 @@ module.exports = {
     alias: {
       components: path.resolve('src/components'),
       views: path.resolve('src/views'),
-      styles: path.resolve('src/styles')
+      styles: path.resolve('src/styles'),
+      assets: path.resolve('src/assets')
     }
   },
   module: {

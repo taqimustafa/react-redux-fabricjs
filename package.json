@@ -12,6 +12,7 @@
     "lint": "eslint src"
   },
   "dependencies": {
+    "antd": "^2.12.3",
     "autoprefixer": "^7.1.2",
     "axios": "^0.16.1",
     "babel-core": "^6.24.1",
