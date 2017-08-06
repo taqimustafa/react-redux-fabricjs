@@ -1,1 +1,1 @@
-# mobx-boilerplate
+Fabric.js with React/Redux
