@@ -1,41 +1,40 @@
 import React from 'react';
+import Text from './Text';
 require('fabric');
 
 export default class CanvasBox extends React.Component {
   constructor() {
     super();
+		this.state = {
+			canvas: null
+		}
     this.canvasContainer = null;
   }
 	componentDidMount() {
-		const canvas = new fabric.Canvas('canvas');
-		setTimeout(() => {
-			canvas.setHeight(this.canvasContainer.getBoundingClientRect().height);
-			canvas.setWidth(this.canvasContainer.getBoundingClientRect().width);
-			canvas.backgroundColor = '#16191E';
+		this.setState({
+			canvas: new fabric.Canvas('canvas'),
+		}, () => {
+			this.updateDimensions();
+			this.state.canvas.backgroundColor = '#16191E';
+			this.state.canvas.renderAll();
 
-			const text = new fabric.Textbox('😎 Fabric.js 😎', {
-				left: canvas.width / 2,
-				top: canvas.height / 2,
-				width: 450,
-				originX: 'center',
-				originY: 'center',
-				textAlign: 'center',
-				fill: 'white',
-				fontSize: 60,
-				scaleX: 2,
-				scaleY: 2,
-			});
-			canvas.add(text);
-			canvas.renderAll();
-		}, 10);
+			setTimeout(() => {
+				const text = new Text({
+					canvas: this.state.canvas
+				});
+			}, 0);
+		});
+	}
+	updateDimensions() {
+		setTimeout(() => {
+			this.state.canvas.setHeight(this.canvasContainer.getBoundingClientRect().height);
+			this.state.canvas.setWidth(this.canvasContainer.getBoundingClientRect().width);
+			this.state.canvas.renderAll();
+		}, -1);
 	}
   render() {
     return (
-			<div
-				style={{
-					width: '100%',
-					height: 'calc(100% - 40px)',
-				}}
+			<div className={this.props.className}
 				ref={(container) => {
 					this.canvasContainer = container;
 				}}

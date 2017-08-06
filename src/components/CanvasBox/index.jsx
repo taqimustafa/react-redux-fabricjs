@@ -14,8 +14,7 @@ export default class CanvasBox extends React.Component {
   render() {
     return (
       <div className={classes.canvasBox}>
-        <Toolbar activeObject={null} />
-        <Canvas />
+        <Canvas className={classes.canvasContainer}/>
       </div>
     );
   }
