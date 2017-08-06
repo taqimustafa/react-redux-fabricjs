@@ -30,7 +30,7 @@ export default class CanvasBox extends React.Component {
 			this.state.canvas.setHeight(this.canvasContainer.getBoundingClientRect().height);
 			this.state.canvas.setWidth(this.canvasContainer.getBoundingClientRect().width);
 			this.state.canvas.renderAll();
-		}, -1);
+		}, 0);
 	}
   render() {
     return (
