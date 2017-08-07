@@ -7,7 +7,12 @@ export default class Sidebar extends React.Component {
   }
   render() {
     return (
-      <div className={classes.listItem}>
+      <div
+        className={classes.listItem}
+        onClick = {() => {
+          this.props.onClick()
+        }}
+      >
         {this.props.children}
       </div>
     );

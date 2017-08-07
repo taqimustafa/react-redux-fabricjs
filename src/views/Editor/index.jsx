@@ -1,23 +1,10 @@
-import React from "react";
+import React, {Component} from 'react';
+import {connect} from 'react-redux';
+import Editor from './Editor.jsx';
 
-import classes from "./Editor.scss";
-import Header from "components/Header";
-import CanvasBox from "components/CanvasBox";
-import Sidebar from "components/Sidebar";
-
-export default class Layout extends React.Component {
-  constructor() {
-    super();
-  }
-  render() {
-    return (
-      <div className={classes.fullWidth}>
-        <Header/>
-        <div className={classes.wrapper}>
-          <Sidebar />
-          <CanvasBox />
-        </div>
-      </div>
-    );
-  }
+function mapStateToProps(state) {
+  return {
+    fabric: state
+  };
 }
+export default connect(mapStateToProps)(Editor);

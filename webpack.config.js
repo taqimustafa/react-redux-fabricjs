@@ -40,7 +40,10 @@ module.exports = {
       components: path.resolve('src/components'),
       views: path.resolve('src/views'),
       styles: path.resolve('src/styles'),
-      assets: path.resolve('src/assets')
+      assets: path.resolve('src/assets'),
+      reducers: path.resolve('src/reducers'),
+      store: path.resolve('src/store'),
+      actions: path.resolve('src/actions'),
     }
   },
   module: {

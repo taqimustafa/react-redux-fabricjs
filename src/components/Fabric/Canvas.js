@@ -1,46 +1,46 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import Text from './Text';
+import { setActiveCanvas } from 'actions/FabricActions';
+
 require('fabric');
 
-export default class CanvasBox extends React.Component {
+class CanvasBox extends React.Component {
   constructor() {
     super();
-		this.state = {
-			canvas: null
-		}
+    this.state = {
+      canvas: null,
+    };
     this.canvasContainer = null;
   }
-	componentDidMount() {
-		this.setState({
-			canvas: new fabric.Canvas('canvas'),
-		}, () => {
-			this.updateDimensions();
-			this.state.canvas.backgroundColor = '#16191E';
-			this.state.canvas.renderAll();
-
-			setTimeout(() => {
-				const text = new Text({
-					canvas: this.state.canvas
-				});
-			}, 0);
-		});
-	}
-	updateDimensions() {
-		setTimeout(() => {
-			this.state.canvas.setHeight(this.canvasContainer.getBoundingClientRect().height);
-			this.state.canvas.setWidth(this.canvasContainer.getBoundingClientRect().width);
-			this.state.canvas.renderAll();
-		}, 0);
-	}
+  componentDidMount() {
+    this.setState({
+      canvas: new fabric.Canvas('canvas'),
+    }, () => {
+      this.props.setActiveCanvas(this.state.canvas);
+      this.updateDimensions();
+      this.state.canvas.backgroundColor = '#16191E';
+      this.state.canvas.renderAll();
+    });
+  }
+  updateDimensions() {
+    this.state.canvas.setHeight(window.innerHeight - 70);
+    this.state.canvas.setWidth(window.innerWidth - 60);
+    this.state.canvas.renderAll();
+  }
   render() {
     return (
-			<div className={this.props.className}
-				ref={(container) => {
-					this.canvasContainer = container;
-				}}
-			>
-				<canvas id="canvas"/>
-			</div>
+      <div
+        className={this.props.className}
+        ref={(container) => {
+          this.canvasContainer = container;
+        }}
+      >
+        <canvas id="canvas" />
+      </div>
     );
   }
 }
+
+const mapStateToProps = state => ({});
+export default connect(mapStateToProps, { setActiveCanvas })(CanvasBox);
