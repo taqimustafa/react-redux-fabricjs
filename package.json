@@ -1,9 +1,9 @@
 {
-  "name": "mobx-boilerplate",
+  "name": "Fabricjs with React/Redux",
   "version": "0.1.1",
-  "description": "React Mobx Boilerplate",
+  "description": "Fabricjs with React/Redux",
   "main": "index.js",
-  "author": "Wajahat Qasim & Taqi Mustafa",
+  "author": "Taqi Mustafa",
   "license": "MIT",
   "scripts": {
     "start": "node server.js",
