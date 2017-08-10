@@ -1,6 +1,6 @@
 import React from 'react';
 
-import Canvas from 'components/Fabric/Canvas.js';
+import Canvas from 'components/Fabric/Canvas';
 import Toolbar from './Toolbar';
 import classes from './CanvasBox.scss';
 
@@ -14,7 +14,7 @@ export default class CanvasBox extends React.Component {
   render() {
     return (
       <div className={classes.canvasBox}>
-        <Canvas className={classes.canvasContainer}/>
+        <Canvas className={classes.canvasContainer} />
       </div>
     );
   }
