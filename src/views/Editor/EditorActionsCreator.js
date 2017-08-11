@@ -6,3 +6,11 @@ export function setActiveCanvas(canvas) {
     },
   };
 }
+export function setActiveObject(activeObject) {
+  return {
+    type: 'OBJECT_UPDATED',
+    payload: {
+      activeObject,
+    },
+  };
+}
