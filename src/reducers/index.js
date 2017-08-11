@@ -1,13 +1,8 @@
-import {combineReducers} from 'redux';
-import FabricReducer from './FabricReducer';
-
-/*
- * We combine all reducers into a single object before updated data is dispatched (sent) to store
- * Your entire applications state (store) is just whatever gets returned from all your reducers
- * */
+import { combineReducers } from 'redux';
+import EditorReducer from 'views/Editor/EditorReducer.js';
 
 const allReducers = combineReducers({
-    FabricReducer
+  EditorReducer,
 });
 
 export default allReducers;

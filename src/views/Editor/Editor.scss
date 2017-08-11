@@ -6,3 +6,16 @@
 	height: calc(100vh - 70px);
 	position: relative;
 }
+.canvasBox{
+	width:calc(100% - 60px);
+	height: 100%;
+	display: inline-block;
+	background-color:#16191E;
+	position: absolute;
+	left: 60px;
+	top: 0px;
+	.canvasContainer{
+		width: 100%;
+		height: 100%;
+	}
+}

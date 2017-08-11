@@ -2,8 +2,8 @@ require('fabric');
 const Store = require('store/index.js');
 
 class FabricText {
-  constructor(props) {
-    this.canvas = Store.default.getState().FabricReducer.canvas;
+  constructor() {
+    this.canvas = Store.default.getState().EditorReducer.canvas;
     if (this.canvas) {
       const text = new fabric.Textbox('Hello World 😎', {
         left: this.canvas.width / 2,

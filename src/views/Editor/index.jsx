@@ -1,10 +1,10 @@
-import React, {Component} from 'react';
-import {connect} from 'react-redux';
-import Editor from './Editor.jsx';
+import { connect } from 'react-redux';
+import { setActiveCanvas } from './EditorActionsCreator';
+import Editor from './Editor';
 
 function mapStateToProps(state) {
   return {
-    fabric: state
+    fabric: state,
   };
 }
-export default connect(mapStateToProps)(Editor);
+export default connect(mapStateToProps, { setActiveCanvas })(Editor);

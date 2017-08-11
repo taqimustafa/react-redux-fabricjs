@@ -1,7 +1,6 @@
 import React from 'react';
-import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { setActiveCanvas } from 'actions/FabricActions';
+
 require('fabric');
 
 class CanvasBox extends React.Component {
@@ -23,12 +22,12 @@ class CanvasBox extends React.Component {
     this.setCanvas(canvas);
   }
   setCanvas(canvas) {
+    this.props.setActiveCanvas(canvas);
     this.setState({
       canvas,
     }, () => {
       this.addCanvasBox();
     });
-    this.props.setActiveCanvas(canvas);
   }
   addCanvasBox() {
     const rect = new fabric.Rect({
@@ -59,8 +58,7 @@ class CanvasBox extends React.Component {
   }
 }
 
-const mapStateToProps = state => ({});
-export default connect(mapStateToProps, { setActiveCanvas })(CanvasBox);
+export default CanvasBox;
 
 CanvasBox.propTypes = {
   className: PropTypes.string,
