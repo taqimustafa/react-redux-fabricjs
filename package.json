@@ -7,7 +7,7 @@
   "license": "MIT",
   "scripts": {
     "start": "node server.js",
-    "prod": "npm run clean && SET NODE_ENV=production && webpack -p --progress",
+    "prod": "npm run clean && export NODE_ENV=production && webpack -p --progress",
     "clean": "rimraf ./dist/*",
     "lint": "eslint src"
   },

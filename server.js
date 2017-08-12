@@ -1,38 +1,42 @@
-var isProduction = process.env.NODE_ENV === 'production';
-var webpack = require('webpack');
-var WebpackDevServer = require('webpack-dev-server');
-var config = require('./webpack.config');
-var app, portNumber = 4000;
+const isProduction = process.env.NODE_ENV === 'production';
+const webpack = require('webpack');
+const WebpackDevServer = require('webpack-dev-server');
+const config = require('./webpack.config');
+const path = require('path');
+const express = require('express');
 
-if(isProduction){
-	var path = require('path');
-	var express = require('express');
-	var gzipFiles = [".js"];
-	app = express();
-	app.get(gzipFiles, function(req, res) {
-		res.set('Content-Encoding', 'gzip');
-		next();
-	});
-	app.use('/assets', express.static(__dirname + '/assets'));
-	app.get('*.js', function(req, res) {
-		res.sendFile(path.join(__dirname, 'dist/'+req.url));
-	});
-	app.get('*', function(req, res) {
-		res.sendFile(path.join(__dirname, 'dist/index.html'));
-	});
+const portNumber = 5550;
+let app;
+
+if (isProduction) {
+  const gzipFiles = ['.js'];
+  app = express();
+  app.get(gzipFiles, (req, res) => {
+    res.set('Content-Encoding', 'gzip');
+    next();
+  });
+  app.use('/assets', express.static(`${__dirname}/assets`));
+  app.get('*.js', (req, res) => {
+    res.sendFile(path.join(__dirname, `dist/${req.url}`));
+  });
+  app.get('*.css', (req, res) => {
+    res.sendFile(path.join(__dirname, `dist/${req.url}`));
+  });
+  app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname, 'dist/index.html'));
+  });
+} else {
+  app = new WebpackDevServer(webpack(config), {
+    publicPath: config.output.publicPath,
+    hot: true,
+    historyApiFallback: true,
+  });
 }
-else{
-	app = new WebpackDevServer(webpack(config), {
-		publicPath: config.output.publicPath,
-		hot: true,
-		historyApiFallback: true
-	});
-}
 
 
-app.listen(portNumber, function(err) {
-	if (err) {
-		return console.error(err);
-	}
-	console.log('Listening at http://localhost:'+portNumber);
-})
+app.listen(portNumber, (err) => {
+  if (err) {
+    return console.error(err);
+  }
+  console.log(`Listening at http://localhost:${portNumber}`);
+});
