@@ -1,20 +1,25 @@
-import React from "react";
-import classes from "./Header.scss";
+import React from 'react';
+import PropTypes from 'prop-types';
+import classes from './Header.scss';
+import { translate } from 'general/translation.js';
 
 export default class Header extends React.Component {
-  constructor() {
-    super();
-  }
   render() {
     return (
       <nav className={`navbar navbar-default ${classes.navbar}`}>
         <div className="navbar-header">
           <a className="navbar-brand">
-            Designer Tool
+            {translate('header.logo')}
           </a>
-          <div className="navbar-tools hidden-sm hidden-xs"></div>
+        </div>
+        <div className="navbar-tools pull-right">
+          <a onClick={() => { this.props.changeLanguage('en'); }}>EN</a>
+          <a onClick={() => { this.props.changeLanguage('de'); }}>DE</a>
         </div>
       </nav>
     );
   }
 }
+Header.propTypes = {
+  changeLanguage: PropTypes.func.isRequired,
+};

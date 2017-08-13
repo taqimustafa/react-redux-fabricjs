@@ -14,3 +14,11 @@ export function setActiveObject(activeObject) {
     },
   };
 }
+export function changeLanguage(locale) {
+  return {
+    type: 'LANGUAGE_UPDATED',
+    payload: {
+      locale,
+    },
+  };
+}

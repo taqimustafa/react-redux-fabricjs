@@ -1,10 +1,19 @@
 import { connect } from 'react-redux';
-import { setActiveCanvas } from './EditorActionsCreator';
+import {
+  setActiveCanvas,
+  setActiveObject,
+  changeLanguage,
+} from './EditorActionsCreator';
 import Editor from './Editor';
 
 function mapStateToProps(state) {
   return {
-    fabric: state,
+    canvas: state.EditorReducer.canvas,
+    locale: state.EditorReducer.locale,
   };
 }
-export default connect(mapStateToProps, { setActiveCanvas })(Editor);
+export default connect(mapStateToProps, {
+  setActiveCanvas,
+  setActiveObject,
+  changeLanguage,
+})(Editor);

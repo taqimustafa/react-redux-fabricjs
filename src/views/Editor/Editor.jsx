@@ -6,16 +6,10 @@ import Sidebar from 'components/Sidebar';
 import Canvas from 'components/Fabric/Canvas';
 
 export default class Layout extends React.Component {
-  constructor() {
-    super();
-    this.state = {
-      value: null,
-    };
-  }
   render() {
     return (
       <div className={classes.fullWidth}>
-        <Header />
+        <Header changeLanguage={this.props.changeLanguage} />
         <div className={classes.wrapper}>
           <Sidebar />
           <div className={classes.canvasBox}>
@@ -32,6 +26,7 @@ export default class Layout extends React.Component {
 
 Layout.propTypes = {
   setActiveCanvas: PropTypes.func.isRequired,
+  changeLanguage: PropTypes.func.isRequired,
 };
 Layout.defaultProps = {
   setActiveCanvas: null,
